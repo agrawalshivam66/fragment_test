@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity  {
     public void first(View view) {
         FragmentTransaction transaction=fm.beginTransaction();
         Fragmentone one=new Fragmentone();
-        transaction.add(R.id.activity_main_layout,one,"one");
+        transaction.replace(R.id.activity_main_layout,one,"one");
         transaction.commit();
     }
 }

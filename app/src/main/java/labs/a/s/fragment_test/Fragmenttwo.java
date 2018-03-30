@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
  */
 public class Fragmenttwo extends Fragment {
 
+View root;
+    TextView res;
 
     public Fragmenttwo() {
         // Required empty public constructor
@@ -23,7 +26,12 @@ public class Fragmenttwo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmenttwo, container, false);
+        root= inflater.inflate(R.layout.fragment_fragmenttwo, container, false);
+    res=(TextView)root.findViewById(R.id.result);
+
+        String value = getArguments().getString("key");
+        res.setText(value);
+        return root;
     }
 
 }

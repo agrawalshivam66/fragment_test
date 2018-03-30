@@ -31,7 +31,7 @@ Button addbutton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         root= inflater.inflate(R.layout.fragment_fragmentone, container, false);
@@ -45,15 +45,26 @@ Button addbutton;
         username=(TextView)root.findViewById(R.id.usernametext);
         username.setText(name);
 
+        first=(EditText)root.findViewById(R.id.first);
+        second=(EditText)root.findViewById(R.id.second);
+
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
 
+                String f=first.getText().toString();
+                int f1=Integer.parseInt(f);
+                String s=second.getText().toString();
+                int s1=Integer.parseInt(s);
+                int res=f1+s1;
+                String result=String.valueOf(res);
 
+                Bundle bundle=new Bundle();
+                bundle.putString("key",result);
 
                 FragmentTransaction transaction=fm.beginTransaction();
                 Fragmenttwo two=new Fragmenttwo();
+                two.setArguments(bundle);
                 transaction.replace(R.id.activity_main_layout,two,"two");
                 transaction.commit();
             }
